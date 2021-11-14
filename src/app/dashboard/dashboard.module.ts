@@ -7,12 +7,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
-import { LoginComponent } from './components/auth/login/login.component'
-import { RegisterComponent} from './components/auth/register/register.component'
-import { OverviewComponent } from './components/overview/overview.component'
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent} from './components/auth/register/register.component';
+import { OverviewComponent } from './components/overview/overview.component';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
-import { RegistroAuxiliarComponent} from './components/auxiliar/registro-auxiliar/registro-auxiliar.component'
-import { AuxilianteComponent} from './components/auxiliar/auxiliante/auxiliante.component'
+import { RegistroAuxiliarComponent} from './components/auxiliar/registro-auxiliar/registro-auxiliar.component';
+import { AuxilianteComponent} from './components/auxiliar/auxiliante/auxiliante.component';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { AuxilianteComponent} from './components/auxiliar/auxiliante/auxiliante.
     ReactiveFormsModule
   ],
   declarations: [
-    DashboardPage, 
+    DashboardPage,
     LoginComponent,
     RegisterComponent,
     OverviewComponent,

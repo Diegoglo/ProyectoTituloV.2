@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,FormControl,FormGroup, FormGroupDirective, Validators} from '@angular/forms';
+import {  AbstractControl,
+          FormBuilder,
+          FormControl,
+          FormGroup,
+          FormGroupDirective,
+          ValidationErrors,
+          ValidatorFn,
+          Validators } from '@angular/forms';
+import { UserProviderService } from '../../../../core/providers/user/user-provider.service';
 
 
 @Component({
@@ -9,78 +17,79 @@ import {FormBuilder,FormControl,FormGroup, FormGroupDirective, Validators} from 
 })
 export class RegisterComponent implements OnInit {
 
-  formulario:FormGroup;
-  public sexo = [
-    { val:'masculino', isChecked: false },
-    {val:'femenino', isChecked: false },
-  ];
+  formulario: FormGroup;
+  sexo: FormGroup;
 
-  onChange($event){
-    if ($event.target.name)
-    console.log($event.target);
+  constructor(
+      private form: FormBuilder,
+      private userService: UserProviderService
+      ) {
+      this.sexo = this.form.group({
+        masculino: new FormControl(false),
+        femenino: new FormControl(false)
+      },
+      {
+        validators: this.checkSexs
+      });
+
+      this.formulario = this.form.group({
+        nombre: new FormControl('', [Validators.required]),
+        apellido: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        sexo: this.sexo,
+        contraseña: new FormControl('', [Validators.required, Validators.minLength(6)],),
+        confirmarContraseña: new FormControl('', [Validators.required])
+      },
+      {
+        validators: this.checkPasswords
+      });
   }
-    
-    
 
+  onChange(){
 
-  constructor(private form:FormBuilder) { 
-    this.formulario=this.form.group({
-      nombre: new FormControl('', [Validators.required]),
-      apellido: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      // sexo: ['', Validators.required],
-      contraseña: new FormControl('', [Validators.required])
-    })
   }
 
   public registrarse(event: Event, reportForm: FormGroupDirective ){
     event.preventDefault();
-  
-    if (this.formulario.valid)
+    if (this.formulario.valid) {
       this.submitReport();
+    }
 
     reportForm.resetForm(); // se resetea en esta parte, porque no se puede asignar como variable, porque la referencia no pasa al padre
   }
 
-  
   public async submitReport(): Promise<void> {
-    console.log(this.formulario.value)
-    
-    
+    // if(this.sexo.value.masculino){
+    //   this.formulario.controls.sexo.setValue(1);
+    // }else{
+    //   this.formulario.controls.sexo.setValue(0);
+    // }
+    this.userService.addUser(this.formulario.value);
   }
 
-  // public async addReport(form: FormGroup): Promise<void> {
-  //   try {
-  //     const fileName = this.imageChangedEvent.target.files[0].name;
-  //     const img = this.base64ToFile(this.croppedImage, fileName);
-  //     this.checkoutForm.get('image').setValue(img);
 
-  //     await this.reportProviderService.addReport(this.checkoutForm.value).toPromise();
-  //     this.notificationService.success('El plan ha sido creado');
-  //     this.checkoutForm.reset();
-  //   } catch (error) {
-  //     console.log(error);
-  //     this.notificationService.error('No se ha podido crear el plan');
-  //   }
-  // }
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    const pass = group.get('contraseña').value;
+    const confirmPass = group.get('confirmarContraseña').value;
+    return pass === confirmPass ? null : {
+       notSame: true
+    };
+  };
 
-  // public async updateReport(): Promise<void> {
-  //   try {
-  //     if (this.changePhoto) {
-  //       const fileName = this.imageChangedEvent.target.files[0].name;
-  //       const img = this.base64ToFile(this.croppedImage, fileName);
-  //       this.checkoutForm.get('image').setValue(img);
-  //     }
-  //     await this.reportProviderService.updateReport(this.id, this.checkoutForm.value, this.changePhoto).toPromise();
-  //     this.notificationService.success('El producto ha sido actualizado');
-  //   } catch (error) {
-  //     console.log(error);
-  //     this.notificationService.error('No se ha podido actualizar el producto');
-  //   }
-  // }
+  checkSexs: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    const m = group.get('masculino').value;
+    const f = group.get('femenino').value;
+    if(!m && !f){
+      return {
+        twoChecked: true
+      };
+    }else{
+      return null;
+    }
+  };
 
   ngOnInit() {
-    
+
   }
 
 }

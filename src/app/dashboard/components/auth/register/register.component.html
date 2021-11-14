@@ -42,7 +42,7 @@
                                 <div *ngIf="formulario.get('email').hasError('required')" class="alert alert-danger" role="alert">
                                     <small class="requerido">(Email requerido)</small>
                                 </div>
-                            </div> 
+                            </div>
                             <ion-label position="floating">Email</ion-label>
                             <ion-input type="email" formControlName="email"></ion-input>
                         </ion-item>
@@ -67,36 +67,41 @@
                                 </div>
                             </div>
                             <ion-label position="floating">Contraseña</ion-label>
-                            <ion-input type="password" formControlName="contraseña"></ion-input>
+                            <ion-input  type="password" formControlName="contraseña"></ion-input>
                         </ion-item>
                     </ion-col>
                 </ion-row>
 
-                <!-- <ion-row class="ion-padding">
-                    <ion-col className="ion-text-center">
-                        <ion-item color="fondo">
-                            <ion-label position="floating">Confirme contraseña</ion-label>
-                            <ion-input type="password" formControlName="ReingresoContraseña"></ion-input>
-                        </ion-item>
-                    </ion-col>
-                </ion-row> -->
+                <ion-row class="ion-padding">
+                  <ion-col className="ion-text-center">
+                      <ion-item>
+                          <div *ngIf="formulario.get('confirmarContraseña').errors && formulario.get('confirmarContraseña').touched">
+                              <div *ngIf="formulario.get('confirmarContraseña').hasError('required')">
+                                  <small class="requerido">(Requiere confirmar contraseña)</small>
+                              </div>
+                          </div>
+                          <ion-label position="floating">Confirmar Contraseña</ion-label>
+                          <ion-input type="password" formControlName="confirmarContraseña"></ion-input>
+                      </ion-item>
+                  </ion-col>
+                </ion-row>
 
-                <!-- <ion-row class="ion-padding">
+
+                <form [formGroup]="sexo" #sexForm="ngForm">
+                  <ion-row class="ion-padding">
                     <ion-col className="ion-text-center">
-                        <p class="requerido" style="padding-left: 5%;">Seleccione su sexo</p>
+                        <p style="padding-left: 3%;">Seleccione su sexo</p>
                         <ion-item color="fondo">
                             <ion-label >Hombre</ion-label>
-                            <ion-checkbox color="primary" style="right: 20%;"></ion-checkbox>
-                            <ion-label>Mujer</ion-label> 
-                            <ion-checkbox color="primary" style="right: 25%;"></ion-checkbox> 
-                        </ion-item>
-
-                        <ion-item *ngFor="let entry of sexo">
-                            <ion-label>{{entry.val}}</ion-label>
-                            <ion-checkbox (name)=entry.val (ionChange)="onChange($event)" slot="end"></ion-checkbox>
+                            <ion-checkbox color="primary" style="right: 20%;" formControlName="masculino" (click)="sexo.controls.femenino.setValue(false)"></ion-checkbox>
+                            <ion-label>Mujer</ion-label>
+                            <ion-checkbox color="primary" style="right: 25%;" formControlName="femenino" (click)="sexo.controls.masculino.setValue(false)"></ion-checkbox>
                         </ion-item>
                     </ion-col>
-                </ion-row> -->
+                </ion-row>
+                </form>
+
+
 
                 <ion-row class="ion-padding-vertical">
                     <ion-col className="ion-text-center">

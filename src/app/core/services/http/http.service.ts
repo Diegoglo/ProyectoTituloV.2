@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { map } from "rxjs/operators";
+import { environment } from '../../../../environments/environment';
+import { map } from 'rxjs/operators';
 
 interface HttpOptions {
-  headers: HttpHeaders
+  headers: HttpHeaders;
 };
 
 @Injectable({
@@ -18,15 +18,9 @@ export class HttpService {
   constructor(private httpClient: HttpClient) {
     this.baseUrl = environment.baseUrl;
 
-    /* this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Access-Control-Allow-Origin': '*'
-      })
-    }; */
     this.httpOptions = {
       headers: new HttpHeaders({
-       // 'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     };
@@ -34,29 +28,22 @@ export class HttpService {
 
   public get<type>(path: string){
     return this.httpClient.get<type>(this.baseUrl + path)
-      .pipe( map((data: any) => {
-        return data.message as type;
-      }));
+      .pipe( map((data: any) => data.message as type));
   }
 
   public post<type>(path: string, body: any){
+    console.log(body);
     return this.httpClient.post<type>(this.baseUrl + path, body, this.httpOptions)
-      .pipe( map((data: any) => {
-        return data.message as type;
-      }))
+      .pipe( map((data: any) => data.message as type));
   }
 
   public patch<type>(path: string, body: any) {
     return this.httpClient.patch<type>(this.baseUrl + path, body, this.httpOptions)
-      .pipe( map((data: any) => {
-        return data.message as type;
-      }))
+      .pipe( map((data: any) => data.message as type));
   }
 
   public delete<type>(path: string){
     return this.httpClient.delete<type>(this.baseUrl + path, this.httpOptions)
-      .pipe( map((data: any) => {
-        return data.message as type;
-      }));
+      .pipe( map((data: any) => data.message as type));
   }
 }
