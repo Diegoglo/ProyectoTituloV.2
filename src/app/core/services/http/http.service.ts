@@ -28,13 +28,16 @@ export class HttpService {
 
   public get<type>(path: string){
     return this.httpClient.get<type>(this.baseUrl + path)
-      .pipe( map((data: any) => data.message as type));
+      .pipe( map((data: any) => {
+        return data.message as type
+    }));
   }
 
   public post<type>(path: string, body: any){
-    console.log(body);
     return this.httpClient.post<type>(this.baseUrl + path, body, this.httpOptions)
-      .pipe( map((data: any) => data.message as type));
+      .pipe( map((data: any) => {
+        return data.message as type
+    }));
   }
 
   public patch<type>(path: string, body: any) {

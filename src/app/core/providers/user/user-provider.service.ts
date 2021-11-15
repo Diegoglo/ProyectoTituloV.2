@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../../services/http/http.service';
 import { Observable } from 'rxjs';
-import { User } from '../../model/user.model';
+import { User2 } from '../../model/user2.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +11,23 @@ export class UserProviderService {
 
   constructor(private http: HttpService) { }
 
-  getAllUsers(): Observable<User[]>{
-    return this.http.get<User[]>('/users/all');
+  getAllUsers(): Observable<User2[]>{
+    return this.http.get<User2[]>('/users/all');
   }
 
-  getUser(id: string): Observable<User>{
-    return this.http.get<User>(`/users/${id}`);
+  getUser(id: string): Observable<User2>{
+    return this.http.get<User2>(`/users/${id}`);
   }
 
-  addUser(user: User): Observable<User>{
-    return this.http.post<User>('/users/register', user);
+  addUser(user: User2): Observable<User2>{
+    return this.http.post<User2>('/users/register', user);
   }
 
-  updateUser(id: string, user: User): Observable<User>{
-    return this.http.patch<User>(`/users/${id}`, user);
+  updateUser(id: string, user: User2): Observable<User2>{
+    return this.http.patch<User2>(`/users/${id}`, user);
   }
 
-  deleteUser(id: string): Observable<User>{
-    return this.http.delete<User>(`/users/${id}`);
+  deleteUser(id: string): Observable<User2>{
+    return this.http.delete<User2>(`/users/${id}`);
   }
 }

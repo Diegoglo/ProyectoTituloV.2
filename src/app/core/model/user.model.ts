@@ -4,7 +4,12 @@ export interface User {
     apellido: string;
     email: string;
     password: string;
-    sexo: string[];
-    // updatedAt?: Date;
+    confirmarContraseña:string;
+    
+    sexo:{
+        masculino: boolean,
+        femenino:boolean
+    };
+// updatedAt?: Date;
     // createdAt?: Date;
 };
