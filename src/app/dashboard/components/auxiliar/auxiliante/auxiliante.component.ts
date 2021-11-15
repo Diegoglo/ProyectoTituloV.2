@@ -7,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuxilianteComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    interface IInvoice {
+      invoiceDate: Date;
+      invoiceNumber: string;
+      totalAmount: number;
+  }
+  }
 
   ngOnInit() {}
 
+  
 }

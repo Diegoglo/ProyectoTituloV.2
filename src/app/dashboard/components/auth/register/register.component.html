@@ -61,13 +61,13 @@
                 <ion-row class="ion-padding">
                     <ion-col className="ion-text-center">
                         <ion-item>
-                            <div *ngIf="formulario.get('contraseña').errors && formulario.get('contraseña').touched">
-                                <div *ngIf="formulario.get('contraseña').hasError('required')">
+                            <div *ngIf="formulario.get('password').errors && formulario.get('password').touched">
+                                <div *ngIf="formulario.get('password').hasError('required')">
                                     <small class="requerido">(Contraseña obligatoria)</small>
                                 </div>
                             </div>
                             <ion-label position="floating">Contraseña</ion-label>
-                            <ion-input  type="password" formControlName="contraseña"></ion-input>
+                            <ion-input  type="password" formControlName="password"></ion-input>
                         </ion-item>
                     </ion-col>
                 </ion-row>
@@ -100,8 +100,6 @@
                     </ion-col>
                 </ion-row>
                 </form>
-
-
 
                 <ion-row class="ion-padding-vertical">
                     <ion-col className="ion-text-center">

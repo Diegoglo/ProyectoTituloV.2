@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    CoreModule
   ],
   providers: [
     { provide: RouteReuseStrategy,
