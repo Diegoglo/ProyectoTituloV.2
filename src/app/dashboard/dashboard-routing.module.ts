@@ -5,6 +5,8 @@ import { LoginComponent} from './components/auth/login/login.component'
 import { RegisterComponent} from './components/auth/register/register.component'
 import { AuxilianteComponent} from './components/auxiliar/auxiliante/auxiliante.component'
 import { RegistroAuxiliarComponent} from './components/auxiliar/registro-auxiliar/registro-auxiliar.component'
+import { OverviewComponent } from './components/overview/overview.component';
+import { AvatarComponent} from './components/avatar/avatar.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,10 @@ const routes: Routes = [
       {
         path:'registerAuxiliar',
         component: RegistroAuxiliarComponent
+      },
+      {
+        path:'overview',
+        component: OverviewComponent
       }
     ]
   },
