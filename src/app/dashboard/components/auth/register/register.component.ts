@@ -78,11 +78,6 @@ export class RegisterComponent implements OnInit {
   }
 
   public async submitReport(): Promise<void> {
-    // if(this.sexo.value.masculino){
-    //   this.formulario.controls.sexo.setValue(1);
-    // }else{
-    //   this.formulario.controls.sexo.setValue(0);
-    // }
     const usuario:User2= {
       nombre:this.formulario.get('nombre').value,
       apellido:this.formulario.get('apellido').value,
@@ -90,8 +85,6 @@ export class RegisterComponent implements OnInit {
       sexo:this.formulario.get('sexo').value,
       password:this.formulario.get('password').value,
     }
-    console.log(this.formulario.value);
-    console.log(usuario);
     await this.userService.addUser(usuario).toPromise();
   }
 
