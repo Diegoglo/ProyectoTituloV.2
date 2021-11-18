@@ -4,5 +4,5 @@ export interface User2 {
     apellido: string;
     email: string;
     password: string;
-    sexo:number;
+    sexo: number;
 };

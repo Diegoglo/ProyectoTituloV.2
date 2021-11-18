@@ -11,11 +11,11 @@ export class UserProviderService {
 
   constructor(private http: HttpService) { }
 
-  getAllUsers(): Observable<User2[]>{
+  getAllUsers(): Observable<any>{
     return this.http.get<User2[]>('/users/all');
   }
 
-  getUser(id: string): Observable<User2>{
+  getUser(id: string): Observable<any>{
     return this.http.get<User2>(`/users/${id}`);
   }
 

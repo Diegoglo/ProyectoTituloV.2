@@ -7,13 +7,13 @@
 </ion-header>
 
 <ion-content>
-    <form [formGroup]="checkoutForm" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <form [formGroup]="checkoutForm" #loginForm="ngForm" (ngSubmit)="submit($event)">
         <ion-grid>
             <ion-row class="ion-padding">
                 <ion-col className="ion-text-center">
                     <ion-item color="fondo">
                         <ion-label position="floating">Usuario</ion-label>
-                        <ion-input type="text"></ion-input>
+                        <ion-input formControlName="email" type="text"></ion-input>
                     </ion-item>
                 </ion-col>
             </ion-row>
@@ -21,7 +21,7 @@
                 <ion-col className="ion-text-center">
                     <ion-item color="fondo">
                         <ion-label position="floating">Contraseña</ion-label>
-                        <ion-input type="password"></ion-input>
+                        <ion-input formControlName="password" type="password"></ion-input>
                     </ion-item>
                 </ion-col>
             </ion-row>

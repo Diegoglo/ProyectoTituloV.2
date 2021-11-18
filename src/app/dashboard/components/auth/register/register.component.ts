@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
     if (this.formulario.valid) {
       // console.log(this.sexo.get('femenino').value);
       this.genero();
-      this.formulario.get('sexo').setValue(this.genero(), this.formulario)
+      this.formulario.get('sexo').setValue(this.genero(), this.formulario);
       // console.log(this.formulario.get('sexo').value);
       this.submitReport();
     }
@@ -78,13 +78,13 @@ export class RegisterComponent implements OnInit {
   }
 
   public async submitReport(): Promise<void> {
-    const usuario:User2= {
+    const usuario: User2= {
       nombre:this.formulario.get('nombre').value,
       apellido:this.formulario.get('apellido').value,
       email:this.formulario.get('email').value,
       sexo:this.formulario.get('sexo').value,
       password:this.formulario.get('password').value,
-    }
+    };
     await this.userService.addUser(usuario).toPromise();
   }
 
@@ -103,7 +103,7 @@ export class RegisterComponent implements OnInit {
     if(!m && !f){
       return {
         twoChecked: true
-      };   
+      };
     }else{
       return null;
     }

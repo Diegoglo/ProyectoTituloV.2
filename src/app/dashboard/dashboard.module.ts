@@ -13,7 +13,7 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { RegistroAuxiliarComponent} from './components/auxiliar/registro-auxiliar/registro-auxiliar.component';
 import { AuxilianteComponent} from './components/auxiliar/auxiliante/auxiliante.component';
-import { AvatarComponent} from './components/avatar/avatar.component'
+import { AvatarComponent} from './components/avatar/avatar.component';
 
 @NgModule({
   imports: [
