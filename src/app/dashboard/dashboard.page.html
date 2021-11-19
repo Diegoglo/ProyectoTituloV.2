@@ -1,4 +1,4 @@
-<ion-menu side="end" contentId="Menu">
+<ion-menu side="end" menuId="first" contentId="Menu">
   <ion-header>
     <ion-toolbar color="primary">
       <ion-title>User</ion-title>
@@ -6,12 +6,12 @@
   </ion-header>
   <ion-content>
     <ion-list>
-        <ion-item routerLink="/user_me" lines="full">
+        <ion-item routerLink="/dashboard/user_me" lines="full">
           <ion-icon name="person-outline"></ion-icon>          
           <ion-label>Mi Perfil</ion-label>
         </ion-item>
       
-        <ion-item routerLink="/" lines="full">
+        <ion-item routerLink="/dashboard/overview" lines="full">
           <ion-icon name="analytics-outline"></ion-icon>
           <ion-label>Dashboard</ion-label>
         </ion-item>
@@ -24,11 +24,6 @@
         <ion-item routerDirection="none" lines="full">
           <ion-icon name="bulb-outline"></ion-icon>
           <ion-label>Ayuda</ion-label>
-        </ion-item>
-
-        <ion-item routerDirection="none" lines="full">
-          <ion-icon name="settings-outline"></ion-icon>
-          <ion-label>Configuración</ion-label>
         </ion-item>
         
         <ion-item routerDirection="none" lines="full">

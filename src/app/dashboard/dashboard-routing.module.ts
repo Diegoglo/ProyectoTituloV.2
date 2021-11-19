@@ -7,6 +7,8 @@ import { AuxilianteComponent} from './components/auxiliar/auxiliante/auxiliante.
 import { RegistroAuxiliarComponent} from './components/auxiliar/registro-auxiliar/registro-auxiliar.component'
 import { OverviewComponent } from './components/overview/overview.component';
 import { AvatarComponent} from './components/avatar/avatar.component';
+import { UserMeComponent} from './components/user/user-me/user-me.component';
+import { UserHelpComponent} from './components/user/user-help/user-help.component'
 
 const routes: Routes = [
   {
@@ -19,7 +21,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'overview',
         pathMatch: 'full'
       },
       {
@@ -41,6 +43,14 @@ const routes: Routes = [
       {
         path:'overview',
         component: OverviewComponent
+      },
+      {
+        path:'user_me',
+        component:UserMeComponent
+      },
+      {
+        path:'user_help',
+        component: UserHelpComponent
       }
     ]
   },

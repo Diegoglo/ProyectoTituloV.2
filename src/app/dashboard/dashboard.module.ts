@@ -14,6 +14,9 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { RegistroAuxiliarComponent} from './components/auxiliar/registro-auxiliar/registro-auxiliar.component';
 import { AuxilianteComponent} from './components/auxiliar/auxiliante/auxiliante.component';
 import { AvatarComponent} from './components/avatar/avatar.component';
+import { UserMeComponent} from './components/user/user-me/user-me.component'
+import { UserHelpComponent} from './components/user/user-help/user-help.component'
+
 
 @NgModule({
   imports: [
@@ -30,7 +33,9 @@ import { AvatarComponent} from './components/avatar/avatar.component';
     OverviewComponent,
     RegistroAuxiliarComponent,
     AuxilianteComponent,
-    AvatarComponent
+    AvatarComponent,
+    UserMeComponent,
+    UserHelpComponent
   ]
 })
 export class DashboardPageModule {}
